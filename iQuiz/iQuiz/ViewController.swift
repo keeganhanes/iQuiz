@@ -65,10 +65,11 @@ class ViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
         dataSource = QuizSubjectDataSource()
         quizTableView.dataSource = dataSource
         quizTableView.delegate = self
-        data = [Subject(title: "Mathmatics", description: "Math related qestions :(", image: UIImage(named: "calculator")!), Subject(title: "Marvel Super Heros", description: "Questions from the Marvel Universe", image: UIImage(named: "marvel")!), Subject(title: "Science", description: "Test your science skills!", image: UIImage(named: "test_tube")!)]
+        data = [Subject(title: "Mathematics", description: "Math related qestions :(", image: UIImage(named: "calculator")!), Subject(title: "Marvel Super Heros", description: "Questions from the Marvel Universe", image: UIImage(named: "marvel")!), Subject(title: "Science", description: "Test your science skills!", image: UIImage(named: "test_tube")!)]
     }
 }
 

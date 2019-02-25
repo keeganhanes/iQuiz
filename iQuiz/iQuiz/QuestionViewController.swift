@@ -12,8 +12,11 @@ var currentAnswer : Int = 0
 var currentAnswerText : String = ""
 var correctAnswer : Int = 0
 var correctAnswerText : String = ""
+var currentQuiz : String = ""
+var currentQuestion : Int = 0
+var numberCorrect : Int = 0
 
-let scienceQuestions : [Question] = [Question(text: "What is fire", answer: "1", answers: ["One of the four classical elements", "A magical reaction given to us by God", "A band that hasn't yet been discovered", "Fire! Fire! Fire! heh-heh"])]
+let scienceQuestions : [Question] = [Question(text: "What is fire?", answer: "1", answers: ["One of the four classical elements", "A magical reaction given to us by God", "A band that hasn't yet been discovered", "Fire! Fire! Fire! heh-heh"])]
 let marvelQuestions : [Question] = [Question(text: "Who is Iron Man?", answer: "1", answers: ["Tony Stark", "Obadiah Stane", "A rock hit by Megadeth", "Nobody knows"]), Question(text: "Who founded the X-Men?", answer: "2", answers: ["Tony Stark", "Professor X", "The X-Institute", "Erik Lensherr"]), Question(text: "How did Spider-Man get his powers?", answer: "1", answers: ["He was bitten by a radioactive spider", "He ate a radioactive spider", "He is a radioactive spider", "He looked at a radioactive spider"])]
 let mathQuestions : [Question] = [Question(text: "What is 2+2?", answer: "1", answers: ["4", "22", "An irrational number", "Nobody knows"])]
 
@@ -49,6 +52,8 @@ class QuestionViewController: UIViewController {
             answerVC.getAnswerText = currentAnswerText
             answerVC.getCorrectAnswer = correctAnswer
             answerVC.getCorrectAnswerText = correctAnswerText
+            answerVC.getCurrentQuiz = currentQuiz
+            answerVC.getCurrentQuestion = currentQuestion
             self.navigationController?.pushViewController(answerVC, animated: true)
         }
     }
@@ -124,30 +129,37 @@ class QuestionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (getQuiz == "Mathmatics") {
-            questionText.text = mathQuestions[0].text
-            answer1.setTitle(mathQuestions[0].answers[0], for: .normal)
-            answer2.setTitle(mathQuestions[0].answers[1], for: .normal)
-            answer3.setTitle(mathQuestions[0].answers[2], for: .normal)
-            answer4.setTitle(mathQuestions[0].answers[3], for: .normal)
-            correctAnswer = Int(mathQuestions[0].answer)!
-            correctAnswerText = mathQuestions[0].answer
+        self.navigationItem.hidesBackButton = true
+        if (getQuiz == "Mathematics") {
+            questionText.text = mathQuestions[currentQuestion].text
+            answer1.setTitle(mathQuestions[currentQuestion].answers[0], for: .normal)
+            answer2.setTitle(mathQuestions[currentQuestion].answers[1], for: .normal)
+            answer3.setTitle(mathQuestions[currentQuestion].answers[2], for: .normal)
+            answer4.setTitle(mathQuestions[currentQuestion].answers[3], for: .normal)
+            correctAnswer = Int(mathQuestions[currentQuestion].answer)!
+            correctAnswerText = mathQuestions[currentQuestion].answers[0]
+            currentQuiz = "Mathematics"
+            currentQuestion = currentQuestion + 1
         } else if (getQuiz == "Marvel Super Heros") {
-            questionText.text = marvelQuestions[0].text
-            answer1.setTitle(marvelQuestions[0].answers[0], for: .normal)
-            answer2.setTitle(marvelQuestions[0].answers[1], for: .normal)
-            answer3.setTitle(marvelQuestions[0].answers[2], for: .normal)
-            answer4.setTitle(marvelQuestions[0].answers[3], for: .normal)
-            correctAnswer = Int(marvelQuestions[0].answer)!
-            correctAnswerText = marvelQuestions[0].answer
+            questionText.text = marvelQuestions[currentQuestion].text
+            answer1.setTitle(marvelQuestions[currentQuestion].answers[0], for: .normal)
+            answer2.setTitle(marvelQuestions[currentQuestion].answers[1], for: .normal)
+            answer3.setTitle(marvelQuestions[currentQuestion].answers[2], for: .normal)
+            answer4.setTitle(marvelQuestions[currentQuestion].answers[3], for: .normal)
+            correctAnswer = Int(marvelQuestions[currentQuestion].answer)!
+            correctAnswerText = marvelQuestions[currentQuestion].answers[0]
+            currentQuiz = "Marvel Super Heros"
+            currentQuestion = currentQuestion + 1
         } else if (getQuiz == "Science") {
-            questionText.text = scienceQuestions[0].text
-            answer1.setTitle(scienceQuestions[0].answers[0], for: .normal)
-            answer2.setTitle(scienceQuestions[0].answers[1], for: .normal)
-            answer3.setTitle(scienceQuestions[0].answers[2], for: .normal)
-            answer4.setTitle(scienceQuestions[0].answers[3], for: .normal)
-            correctAnswer = Int(scienceQuestions[0].answer)!
-            correctAnswerText = scienceQuestions[0].answer
+            questionText.text = scienceQuestions[currentQuestion].text
+            answer1.setTitle(scienceQuestions[currentQuestion].answers[0], for: .normal)
+            answer2.setTitle(scienceQuestions[currentQuestion].answers[1], for: .normal)
+            answer3.setTitle(scienceQuestions[currentQuestion].answers[2], for: .normal)
+            answer4.setTitle(scienceQuestions[currentQuestion].answers[3], for: .normal)
+            correctAnswer = Int(scienceQuestions[currentQuestion].answer)!
+            correctAnswerText = scienceQuestions[currentQuestion].answers[0]
+            currentQuiz = "Science"
+            currentQuestion = currentQuestion + 1
         } else {
             questionText.text = "Quiz unavailable"
         }
