@@ -11,6 +11,7 @@ import UIKit
 var question = ""
 var answers : [String] = []
 var data : [Subject] = []
+var baseURL = "http://tednewardsandbox.site44.com/questions.json"
 
 class Subject {
     init(title: String, description: String, image: UIImage) {
@@ -47,11 +48,20 @@ class QuizSubjectDataSource : NSObject, UITableViewDataSource {
 class ViewController: UIViewController, UITableViewDelegate {
    
     @IBOutlet weak var quizTableView: UITableView!
+    @IBOutlet var popOver: UIView!
+    @IBAction func checkNowTouch(_ sender: Any) {
+        self.popOver.removeFromSuperview()
+    }
     @IBAction func settingsBtnTouch(_ sender: Any) {
+        self.view.addSubview(popOver)
+        popOver.center = self.view.center
+        /*
         let alert = UIAlertController(title: "Settings", message: "This is where settings go", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         self.present(alert, animated: true, completion: nil)
+        */
     }
+
     
     var dataSource : QuizSubjectDataSource? = nil
     
@@ -63,8 +73,41 @@ class ViewController: UIViewController, UITableViewDelegate {
         self.navigationController?.pushViewController(questionVC, animated: true)
     }
     
+    func getJsonFromUrl() {
+        let url = NSURL(string: baseURL)
+        URLSession.shared.dataTask(with: (url as URL?)!, completionHandler: {(data, response, error) -> Void in
+            
+            if let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? NSDictionary {
+                
+                //printing the json in console
+                print(jsonObj!.value(forKey: "questions")!)
+                
+                //getting the avengers tag array from json and converting it to NSArray
+                if let questionArray = jsonObj!.value(forKey: "questions") as? NSArray {
+                    //looping through all the elements
+                    for question in questionArray{
+                        
+                        //converting the element to a dictionary
+                        if let questionDict = question as? NSDictionary {
+                            
+                            //getting the name from the dictionary
+                            if let name = questionDict.value(forKey: "name") {
+                                
+                                //adding the name to the array
+                                self.nameArray.append((name as? String)!)
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }).resume()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        getJsonFromUrl()
+        self.popOver.layer.cornerRadius = 10
         self.navigationItem.hidesBackButton = true
         dataSource = QuizSubjectDataSource()
         quizTableView.dataSource = dataSource

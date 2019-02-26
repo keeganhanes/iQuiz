@@ -20,6 +20,7 @@ class AnswerViewController: UIViewController {
     @IBOutlet weak var correctAnswer: UILabel!
     @IBAction func nextTouch(_ sender: Any) {
         if (getCurrentQuiz == "Mathematics") {
+            currentAnswer = 0
             if (mathQuestions.count <= getCurrentQuestion) {
                 let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
                 let finishVC = storyboard.instantiateViewController(withIdentifier: "FinishViewController") as! FinishViewController
@@ -33,6 +34,7 @@ class AnswerViewController: UIViewController {
                 self.navigationController?.pushViewController(questionVC, animated: true)
             }
         } else if (getCurrentQuiz == "Science") {
+            currentAnswer = 0
             if (scienceQuestions.count <= getCurrentQuestion) {
                 let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
                 let finishVC = storyboard.instantiateViewController(withIdentifier: "FinishViewController") as! FinishViewController
@@ -46,6 +48,7 @@ class AnswerViewController: UIViewController {
                 self.navigationController?.pushViewController(questionVC, animated: true)
             }
         } else {
+            currentAnswer = 0
             if (marvelQuestions.count <= getCurrentQuestion) {
                 let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
                 let finishVC = storyboard.instantiateViewController(withIdentifier: "FinishViewController") as! FinishViewController
@@ -62,6 +65,7 @@ class AnswerViewController: UIViewController {
     }
     
     @IBAction func swipeLeft(_ sender: Any) {
+        currentAnswer = 0
         if (getCurrentQuiz == "Mathematics") {
             if (mathQuestions.count <= getCurrentQuestion) {
                 let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
@@ -107,6 +111,7 @@ class AnswerViewController: UIViewController {
     @IBAction func swipeRight(_ sender: Any) {
         currentQuestion = 0
         numberCorrect = 0
+        currentAnswer = 0
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let VC = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
         self.navigationController?.pushViewController(VC, animated: true)

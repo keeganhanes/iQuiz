@@ -75,6 +75,7 @@ class QuestionViewController: UIViewController {
     @IBAction func swipeRight(_ sender: Any) {
         currentQuestion = 0
         numberCorrect = 0
+        currentAnswer = 0
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let VC = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
         self.navigationController?.pushViewController(VC, animated: true)
