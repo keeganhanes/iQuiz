@@ -61,6 +61,58 @@ class AnswerViewController: UIViewController {
         }
     }
     
+    @IBAction func swipeLeft(_ sender: Any) {
+        if (getCurrentQuiz == "Mathematics") {
+            if (mathQuestions.count <= getCurrentQuestion) {
+                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                let finishVC = storyboard.instantiateViewController(withIdentifier: "FinishViewController") as! FinishViewController
+                finishVC.getCorrect = numberCorrect
+                finishVC.getTotal = mathQuestions.count
+                self.navigationController?.pushViewController(finishVC, animated: true)
+            } else {
+                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                let questionVC = storyboard.instantiateViewController(withIdentifier: "QuestionViewController") as! QuestionViewController
+                questionVC.getQuiz = "Mathematics"
+                self.navigationController?.pushViewController(questionVC, animated: true)
+            }
+        } else if (getCurrentQuiz == "Science") {
+            if (scienceQuestions.count <= getCurrentQuestion) {
+                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                let finishVC = storyboard.instantiateViewController(withIdentifier: "FinishViewController") as! FinishViewController
+                finishVC.getCorrect = numberCorrect
+                finishVC.getTotal = scienceQuestions.count
+                self.navigationController?.pushViewController(finishVC, animated: true)
+            } else {
+                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                let questionVC = storyboard.instantiateViewController(withIdentifier: "QuestionViewController") as! QuestionViewController
+                questionVC.getQuiz = "Science"
+                self.navigationController?.pushViewController(questionVC, animated: true)
+            }
+        } else {
+            if (marvelQuestions.count <= getCurrentQuestion) {
+                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                let finishVC = storyboard.instantiateViewController(withIdentifier: "FinishViewController") as! FinishViewController
+                finishVC.getCorrect = numberCorrect
+                finishVC.getTotal = marvelQuestions.count
+                self.navigationController?.pushViewController(finishVC, animated: true)
+            } else {
+                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                let questionVC = storyboard.instantiateViewController(withIdentifier: "QuestionViewController") as! QuestionViewController
+                questionVC.getQuiz = "Marvel Super Heros"
+                self.navigationController?.pushViewController(questionVC, animated: true)
+            }
+        }
+    }
+    
+    @IBAction func swipeRight(_ sender: Any) {
+        currentQuestion = 0
+        numberCorrect = 0
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let VC = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        self.navigationController?.pushViewController(VC, animated: true)
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

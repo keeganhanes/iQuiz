@@ -156,7 +156,12 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.95686274510000002" green="0.7846777613" blue="0.74272741379999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="2aw-Id-ahH"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="fjJ-Zq-WbM" appends="YES" id="tfv-M3-MPf"/>
+                            <outletCollection property="gestureRecognizers" destination="aPN-yO-LJu" appends="YES" id="DEN-MS-4QV"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="answer1" destination="lik-vE-MQ8" id="FIr-Vr-Lna"/>
@@ -167,6 +172,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZOU-T0-nqD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="fjJ-Zq-WbM">
+                    <connections>
+                        <action selector="swipeLeft:" destination="P38-qD-A5u" id="gha-JZ-qbF"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="aPN-yO-LJu">
+                    <connections>
+                        <action selector="swipeRight:" destination="P38-qD-A5u" id="OGb-sy-VQZ"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1935" y="130"/>
         </scene>
@@ -181,44 +196,60 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vvu-eK-Sbu">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your answer:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0YD-Gq-fDf">
-                                <rect key="frame" x="16" y="310" width="288" height="52"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Answer:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpf-3w-o5D">
+                                <rect key="frame" x="16" y="311" width="288" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Correct Answer:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ctk-rY-98h">
-                                <rect key="frame" x="16" y="370" width="288" height="52"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Correct Answer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Grq-Wz-Bmw">
+                                <rect key="frame" x="16" y="370" width="288" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45M-x9-c8G">
-                                <rect key="frame" x="258" y="70" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5b-zo-non">
+                                <rect key="frame" x="259" y="70" width="45" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
-                                    <action selector="nextTouch:" destination="qUW-Ko-ToP" eventType="touchUpInside" id="pU3-Ws-9B3"/>
+                                    <action selector="nextTouch:" destination="qUW-Ko-ToP" eventType="touchUpInside" id="i7a-YE-px9"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="nnT-aQ-6kE"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="SjZ-FH-ism" appends="YES" id="pFV-te-rkK"/>
+                            <outletCollection property="gestureRecognizers" destination="LwG-Bg-28M" appends="YES" id="Jye-s6-GMp"/>
+                        </connections>
                     </view>
                     <connections>
-                        <outlet property="correctAnswer" destination="Ctk-rY-98h" id="pOd-zC-7an"/>
+                        <outlet property="correctAnswer" destination="Grq-Wz-Bmw" id="tDg-jl-nzG"/>
                         <outlet property="results" destination="vvu-eK-Sbu" id="bXy-2u-75e"/>
-                        <outlet property="usersAnswer" destination="0YD-Gq-fDf" id="xp5-g7-mwm"/>
+                        <outlet property="usersAnswer" destination="wpf-3w-o5D" id="TAC-QL-wqg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J1F-rU-83f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="SjZ-FH-ism">
+                    <connections>
+                        <action selector="swipeLeft:" destination="qUW-Ko-ToP" id="wpP-bz-iNp"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="LwG-Bg-28M">
+                    <connections>
+                        <action selector="swipeRight:" destination="qUW-Ko-ToP" id="NAS-mg-ohx"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2760" y="130"/>
         </scene>
@@ -233,36 +264,52 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2Q-JQ-bRd">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yTv-WA-5wr">
-                                <rect key="frame" x="236" y="70" width="68" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Restart"/>
-                                <connections>
-                                    <action selector="restartTouch:" destination="PUi-iM-WZc" eventType="touchUpInside" id="JqR-TU-vYC"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amount correct" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Yv-Tu-hak">
-                                <rect key="frame" x="16" y="281" width="288" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amount Correct" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lb6-sW-7tU">
+                                <rect key="frame" x="16" y="308" width="288" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEQ-ef-SAv">
+                                <rect key="frame" x="236" y="70" width="68" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Restart"/>
+                                <connections>
+                                    <action selector="restartTouch:" destination="PUi-iM-WZc" eventType="touchUpInside" id="k3F-eG-sIp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="AMu-Ih-7fZ"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="dmk-vF-7dx" appends="YES" id="AYD-5I-sYm"/>
+                            <outletCollection property="gestureRecognizers" destination="33A-oO-Mez" appends="YES" id="Kv6-Xy-Pmi"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="resultLabel" destination="A2Q-JQ-bRd" id="G1J-Bu-9K0"/>
-                        <outlet property="scoreLabel" destination="5Yv-Tu-hak" id="hbp-LE-fPC"/>
+                        <outlet property="scoreLabel" destination="Lb6-sW-7tU" id="xpa-Ai-SZk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Gm-rh-G1y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="dmk-vF-7dx">
+                    <connections>
+                        <action selector="swipeLeft:" destination="PUi-iM-WZc" id="eXA-TP-vQu"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="33A-oO-Mez">
+                    <connections>
+                        <action selector="swipeRight:" destination="PUi-iM-WZc" id="gEL-dm-14Z"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3480" y="130"/>
         </scene>

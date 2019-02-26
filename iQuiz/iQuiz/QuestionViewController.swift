@@ -57,6 +57,30 @@ class QuestionViewController: UIViewController {
             self.navigationController?.pushViewController(answerVC, animated: true)
         }
     }
+    
+    @IBAction func swipeLeft(_ sender: Any) {
+        if (currentAnswer != 0) {
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            let answerVC = storyboard.instantiateViewController(withIdentifier: "AnswerViewController") as! AnswerViewController
+            answerVC.getAnswer = currentAnswer
+            answerVC.getAnswerText = currentAnswerText
+            answerVC.getCorrectAnswer = correctAnswer
+            answerVC.getCorrectAnswerText = correctAnswerText
+            answerVC.getCurrentQuiz = currentQuiz
+            answerVC.getCurrentQuestion = currentQuestion
+            self.navigationController?.pushViewController(answerVC, animated: true)
+        }
+    }
+    
+    @IBAction func swipeRight(_ sender: Any) {
+        currentQuestion = 0
+        numberCorrect = 0
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let VC = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        self.navigationController?.pushViewController(VC, animated: true)
+    }
+    
+    
     @IBOutlet weak var questionText: UILabel!
     @IBOutlet weak var answer1: UIButton!
     @IBAction func answer1Touch(_ sender: Any) {
