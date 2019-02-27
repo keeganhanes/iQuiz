@@ -19,92 +19,32 @@ class AnswerViewController: UIViewController {
     @IBOutlet weak var usersAnswer: UILabel!
     @IBOutlet weak var correctAnswer: UILabel!
     @IBAction func nextTouch(_ sender: Any) {
-        if (getCurrentQuiz == "Mathematics") {
-            currentAnswer = 0
-            if (mathQuestions.count <= getCurrentQuestion) {
-                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                let finishVC = storyboard.instantiateViewController(withIdentifier: "FinishViewController") as! FinishViewController
-                finishVC.getCorrect = numberCorrect
-                finishVC.getTotal = mathQuestions.count
-                self.navigationController?.pushViewController(finishVC, animated: true)
-            } else {
-                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                let questionVC = storyboard.instantiateViewController(withIdentifier: "QuestionViewController") as! QuestionViewController
-                questionVC.getQuiz = "Mathematics"
-                self.navigationController?.pushViewController(questionVC, animated: true)
-            }
-        } else if (getCurrentQuiz == "Science") {
-            currentAnswer = 0
-            if (scienceQuestions.count <= getCurrentQuestion) {
-                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                let finishVC = storyboard.instantiateViewController(withIdentifier: "FinishViewController") as! FinishViewController
-                finishVC.getCorrect = numberCorrect
-                finishVC.getTotal = scienceQuestions.count
-                self.navigationController?.pushViewController(finishVC, animated: true)
-            } else {
-                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                let questionVC = storyboard.instantiateViewController(withIdentifier: "QuestionViewController") as! QuestionViewController
-                questionVC.getQuiz = "Science"
-                self.navigationController?.pushViewController(questionVC, animated: true)
-            }
+        if (quizData[currentQuizNumber].questions.count <= getCurrentQuestion) {
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            let finishVC = storyboard.instantiateViewController(withIdentifier: "FinishViewController") as! FinishViewController
+            finishVC.getCorrect = numberCorrect
+            finishVC.getTotal = quizData[currentQuizNumber].questions.count
+            self.navigationController?.pushViewController(finishVC, animated: true)
         } else {
-            currentAnswer = 0
-            if (marvelQuestions.count <= getCurrentQuestion) {
-                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                let finishVC = storyboard.instantiateViewController(withIdentifier: "FinishViewController") as! FinishViewController
-                finishVC.getCorrect = numberCorrect
-                finishVC.getTotal = marvelQuestions.count
-                self.navigationController?.pushViewController(finishVC, animated: true)
-            } else {
-                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                let questionVC = storyboard.instantiateViewController(withIdentifier: "QuestionViewController") as! QuestionViewController
-                questionVC.getQuiz = "Marvel Super Heros"
-                self.navigationController?.pushViewController(questionVC, animated: true)
-            }
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            let questionVC = storyboard.instantiateViewController(withIdentifier: "QuestionViewController") as! QuestionViewController
+            questionVC.getQuiz = quizData[currentQuizNumber].title
+            self.navigationController?.pushViewController(questionVC, animated: true)
         }
     }
     
     @IBAction func swipeLeft(_ sender: Any) {
-        currentAnswer = 0
-        if (getCurrentQuiz == "Mathematics") {
-            if (mathQuestions.count <= getCurrentQuestion) {
-                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                let finishVC = storyboard.instantiateViewController(withIdentifier: "FinishViewController") as! FinishViewController
-                finishVC.getCorrect = numberCorrect
-                finishVC.getTotal = mathQuestions.count
-                self.navigationController?.pushViewController(finishVC, animated: true)
-            } else {
-                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                let questionVC = storyboard.instantiateViewController(withIdentifier: "QuestionViewController") as! QuestionViewController
-                questionVC.getQuiz = "Mathematics"
-                self.navigationController?.pushViewController(questionVC, animated: true)
-            }
-        } else if (getCurrentQuiz == "Science") {
-            if (scienceQuestions.count <= getCurrentQuestion) {
-                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                let finishVC = storyboard.instantiateViewController(withIdentifier: "FinishViewController") as! FinishViewController
-                finishVC.getCorrect = numberCorrect
-                finishVC.getTotal = scienceQuestions.count
-                self.navigationController?.pushViewController(finishVC, animated: true)
-            } else {
-                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                let questionVC = storyboard.instantiateViewController(withIdentifier: "QuestionViewController") as! QuestionViewController
-                questionVC.getQuiz = "Science"
-                self.navigationController?.pushViewController(questionVC, animated: true)
-            }
+        if (quizData[currentQuizNumber].questions.count <= getCurrentQuestion) {
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            let finishVC = storyboard.instantiateViewController(withIdentifier: "FinishViewController") as! FinishViewController
+            finishVC.getCorrect = numberCorrect
+            finishVC.getTotal = quizData[currentQuizNumber].questions.count
+            self.navigationController?.pushViewController(finishVC, animated: true)
         } else {
-            if (marvelQuestions.count <= getCurrentQuestion) {
-                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                let finishVC = storyboard.instantiateViewController(withIdentifier: "FinishViewController") as! FinishViewController
-                finishVC.getCorrect = numberCorrect
-                finishVC.getTotal = marvelQuestions.count
-                self.navigationController?.pushViewController(finishVC, animated: true)
-            } else {
-                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                let questionVC = storyboard.instantiateViewController(withIdentifier: "QuestionViewController") as! QuestionViewController
-                questionVC.getQuiz = "Marvel Super Heros"
-                self.navigationController?.pushViewController(questionVC, animated: true)
-            }
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            let questionVC = storyboard.instantiateViewController(withIdentifier: "QuestionViewController") as! QuestionViewController
+            questionVC.getQuiz = quizData[currentQuizNumber].title
+            self.navigationController?.pushViewController(questionVC, animated: true)
         }
     }
     
